@@ -8,11 +8,13 @@ interface Props {
 
 const MainComponent = ({ children }: Props) => {
     return (
-        <section>
+        <>
             <HeaderComponent/>
+            <main className="pt-18">
             {children}
+            </main>
             <FooterComponent/>
-        </section>);
+        </>);
 };
 
 export default MainComponent;

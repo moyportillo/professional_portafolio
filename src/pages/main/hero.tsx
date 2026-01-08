@@ -1,7 +1,16 @@
+import profileImg from "@/assets/img/profile.png";
 export const HeroComponent = () => {
   return (
-      <section className="min-h-screen flex items-center justify-center bg-[#0c0c0f] text-white px-8 pt-28">
+      <section className="min-h-screen flex items-center justify-center bg-[#0c0c0f] text-white px-8 pt-10 md:pt-0">
           <div className="max-w-4xl text-center">
+              <div className="flex justify-center mb-6">
+                  <img
+                      src={profileImg}
+                      alt="Moises Bustillo"
+                      className="w-32 h-32 md:w-80 md:h-80 rounded-full object-cover
+                       border-4 border-violet-500 shadow-lg"
+                  />
+              </div>
               <p className="text-4xl md:text-5xl font-light">
                   ¡Hola!, Soy <br />
                   <span className="text-violet-400 font-semibold">Moises A. Bustillo Portillo</span>
