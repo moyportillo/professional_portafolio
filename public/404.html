@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/professional_portafolio/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio Profesional - Moises Bustillo</title>
+    <script>
+      // Redirigir a index.html para que React Router maneje la ruta
+      var path = window.location.pathname;
+      var basePath = '/professional_portafolio';
+      if (path.startsWith(basePath)) {
+        path = path.substring(basePath.length);
+      }
+      window.location.replace(basePath + '/index.html' + window.location.search + window.location.hash);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <p>Redirigiendo...</p>
+  </body>
+</html>

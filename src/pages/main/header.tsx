@@ -12,16 +12,11 @@ const HeaderComponent = () => {
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="w-full bg-blue-900 shadow-2xl fixed top-0 z-50">
+        <header className="w-full h-18 bg-blue-900 shadow-2xl fixed top-0 z-50">
             <div className="flex items-center justify-between w-full px-6 py-4">
 
                 {/* LOGO */}
                 <Link className="flex items-center gap-3" to="/">
-                    <img
-                        src="/src/assets/icon/logo64x64.png"
-                        className="h-10 w-auto"
-                        alt="Logo"
-                    />
                     <span className="text-white font-bold text-xl hidden sm:block">
             Portafolio Profesional
           </span>

@@ -1,12 +1,12 @@
 import Root from '@/root.tsx';
-import {createBrowserRouter, Navigate} from "react-router-dom";
+import {createHashRouter, Navigate} from "react-router-dom";
 import PrincipalComponent from "@/pages/main/principal.tsx";
 import DoctrinaComponent from "@/pages/doctrina/doctrina.tsx";
 import MinisteriosComponent from "@/pages/ministerios/ministerio.tsx";
 import ContactoComponent from "@/pages/contacto/contacto.tsx";
 
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: '/',
         element: <Root />,

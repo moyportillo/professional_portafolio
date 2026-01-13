@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "deploy:token": "gh-pages -d dist -r https://$GITHUB_TOKEN@github.com/moyportillo/professional_portafolio.git"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
