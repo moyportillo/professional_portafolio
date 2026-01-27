@@ -17,19 +17,16 @@ export const HeroComponent = () => {
               </p>
 
               <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                  Backend developer especializado en Java y Spring Boot, y frontend developer con ReactJS y TypeScript.
-                  Diseños y desarrollos de servicios tecnologicos robustas y optimos, aplicando principios SOLID, Clean Code,
-                  pruebas unitarias y buenas prácticas de arquitectura. Experiencia en bases de datos SQL y NoSQL.
-                  Actualmente soy estudiante del máster universitario en Análisis de Datos Masivos (Big Data).
+                  Arquitecto y desarrollador fullstack de software con experiencia en microservicios, cloud e IA. Especializado en Spring Boot, React, DevOps y Big Data, con enfoque en arquitecturas escalables, APIs, automatización, Machine Learning y soluciones basadas en LLM.
               </p>
 
               <div className="flex justify-center mt-8 gap-4">
                   <button className="bg-violet-600 px-6 py-3 rounded-lg hover:bg-violet-700">
-                      Discuss for Projects
+                      Proyectos
                   </button>
 
                   <button className="border border-gray-600 px-6 py-3 rounded-lg hover:border-white">
-                      View Portfolios →
+                      Ver Stack Tecnólogico →
                   </button>
               </div>
           </div>

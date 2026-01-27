@@ -27,8 +27,8 @@ const HeaderComponent = () => {
                     <NavigationMenuList className="flex gap-6">
                         {[
                             { to: "/", label: "Inicio" },
-                            { to: "/doctrina", label: "Stack Tech" },
-                            { to: "/ministerios", label: "Proyectos" },
+                            { to: "/stack", label: "Stack Tech" },
+                            { to: "/proyecto", label: "Proyectos" },
                             { to: "/contacto", label: "Contacto" }
                         ].map(item => (
                             <NavigationMenuItem key={item.to}>
@@ -78,7 +78,7 @@ const HeaderComponent = () => {
                         </Link>
 
                         <Link
-                            to="/doctrina"
+                            to="/stack"
                             onClick={() => setOpen(false)}
                             className="text-white py-2 border-b border-blue-700"
                         >
@@ -86,7 +86,7 @@ const HeaderComponent = () => {
                         </Link>
 
                         <Link
-                            to="/ministerios"
+                            to="/proyecto"
                             onClick={() => setOpen(false)}
                             className="text-white py-2 border-b border-blue-700"
                         >
