@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Github, Briefcase, Code2, ExternalLink, Calendar } from 'lucide-react';
+import { Github, Brain, Briefcase, Code2, ExternalLink, Calendar } from 'lucide-react';
 
 // Tipos de proyectos
-type ProjectCategory = 'github' | 'work' | 'personal';
+type ProjectCategory = 'github' | 'work' | 'personal' | 'ia';
 
 interface Project {
     id: number;
@@ -38,6 +38,10 @@ const techIcons: Record<string, string> = {
     'GraphQL': '📊',
     'Tailwind': '🎨',
     'Git': '📦',
+    'LLM': '🧠',
+    'RAG': '📚',
+    'Embedding': '🔢',
+    'Hugging Face': '🤗',
 };
 
 const ProjectsComponent = () => {
@@ -47,15 +51,25 @@ const ProjectsComponent = () => {
     const projects: Project[] = [
         {
             id: 1,
-            title: 'Sistema de Microservicios E-Commerce',
-            description: 'Arquitectura de microservicios escalable con Spring Boot, implementando patrones de diseño como Circuit Breaker, API Gateway y Event Sourcing.',
-            category: 'work',
-            technologies: ['Java', 'Spring Boot', 'Docker', 'Kubernetes', 'PostgreSQL', 'Kafka', 'Redis'],
-            date: '2024',
-            link: 'https://example.com'
+            title: 'RAG+Embedding+LLM Text Generation',
+            description: 'An end-to-end Retrieval-Augmented Generation (RAG) evaluation pipeline that combines semantic embeddings, vector similarity search, and large language models (LLMs) for question-answering tasks. This project uses Ollama with LLaMA models, sentence transformers for embeddings, and F1-score metrics for performance evaluation.',
+            category: 'ia',
+            technologies: ['Python', 'LLM', 'RAG', 'Embedding', 'Hugging Face', 'Git'],
+            github: 'https://github.com/moyportillo/RAG-Embedding-LLM-Text-Generation.git',
+            date: '2025'
         },
         {
             id: 2,
+            title: 'Iglesia Bautista Hebrón - Sitio Web Oficial',
+            description: 'Sitio web oficial de la Iglesia Bautista Hebrón ubicada en Tegucigalpa, Honduras. Este proyecto es una aplicación web moderna desarrollada con React y TypeScript que presenta información sobre la iglesia, sus doctrinas, ministerios, predicaciones y formas de contacto.',
+            category: 'personal',
+            technologies: ['React', 'TypeScript', 'Tailwind', 'Git'],
+            date: '2026',
+            github: 'https://github.com/moyportillo/IBH-Web-Site-Public.git',
+            link: 'https://moyportillo.github.io/IBH-Web-Site-Public/#/home'
+        },
+        {
+            id: 3,
             title: 'API REST con Clean Architecture',
             description: 'API RESTful siguiendo principios SOLID y Clean Architecture, con documentación Swagger y pruebas unitarias completas.',
             category: 'github',
@@ -64,7 +78,7 @@ const ProjectsComponent = () => {
             date: '2024'
         },
         {
-            id: 3,
+            id: 4,
             title: 'Dashboard Analytics en React',
             description: 'Dashboard interactivo para análisis de datos en tiempo real con gráficos dinámicos y filtros avanzados.',
             category: 'personal',
@@ -73,7 +87,7 @@ const ProjectsComponent = () => {
             date: '2023'
         },
         {
-            id: 4,
+            id: 5,
             title: 'Sistema de Gestión Cloud-Native',
             description: 'Aplicación cloud-native desplegada en AWS con infraestructura como código usando Terraform y CI/CD con GitHub Actions.',
             category: 'work',
@@ -82,16 +96,17 @@ const ProjectsComponent = () => {
             link: 'https://example.com'
         },
         {
-            id: 5,
+            id: 6,
             title: 'Plataforma de E-Learning',
             description: 'Sistema completo de gestión de cursos online con autenticación JWT, pagos integrados y sistema de notificaciones.',
             category: 'personal',
             technologies: ['Java', 'Spring Boot', 'React', 'MySQL', 'Redis', 'AWS'],
             github: 'https://github.com/usuario/elearning',
+            link: 'https://example.com',
             date: '2023'
         },
         {
-            id: 6,
+            id: 7,
             title: 'Integración de Sistemas Legacy',
             description: 'Modernización e integración de sistemas legacy mediante APIs REST y mensajería asíncrona.',
             category: 'work',
@@ -107,6 +122,7 @@ const ProjectsComponent = () => {
     const getCategoryIcon = (category: ProjectCategory) => {
         switch(category) {
             case 'github': return <Github className="w-4 h-4" />;
+            case 'ia': return <Brain className="w-4 h-4" />;
             case 'work': return <Briefcase className="w-4 h-4" />;
             case 'personal': return <Code2 className="w-4 h-4" />;
         }
@@ -115,6 +131,7 @@ const ProjectsComponent = () => {
     const getCategoryLabel = (category: ProjectCategory) => {
         switch(category) {
             case 'github': return 'GitHub';
+            case 'ia': return 'IA';
             case 'work': return 'Experiencia Laboral';
             case 'personal': return 'Personal';
         }
@@ -130,7 +147,7 @@ const ProjectsComponent = () => {
                     </h1>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                         Una colección de proyectos que demuestran mis habilidades en desarrollo backend,
-                        frontend y arquitectura de software
+                        frontend, arquitectura de software e Inteligencia Artificial
                     </p>
                 </div>
 
@@ -156,6 +173,17 @@ const ProjectsComponent = () => {
                     >
                         <Briefcase className="w-4 h-4" />
                         Experiencia Laboral
+                    </button>
+                    <button
+                        onClick={() => setSelectedCategory('ia')}
+                        className={`px-6 py-2 rounded-lg transition-all flex items-center gap-2 ${
+                            selectedCategory === 'ia'
+                                ? 'bg-violet-600 text-white'
+                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                        }`}
+                    >
+                        <Brain className="w-4 h-4" />
+                        IA
                     </button>
                     <button
                         onClick={() => setSelectedCategory('github')}
