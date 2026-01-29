@@ -12,7 +12,7 @@ const HeaderComponent = () => {
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="w-full h-18 bg-blue-900 shadow-2xl fixed top-0 z-50">
+        <header className="w-full h-18 bg-gradient-to-br from-blue-900 via-violet-900 to-purple-900 shadow-2xl fixed top-0 z-50">
             <div className="flex items-center justify-between w-full px-6 py-4">
 
                 {/* LOGO */}
@@ -34,7 +34,7 @@ const HeaderComponent = () => {
                             <NavigationMenuItem key={item.to}>
                                 <NavigationMenuLink
                                     asChild
-                                    className={`${navigationMenuTriggerStyle()} text-white text-lg bg-blue-900 hover:bg-blue-700`}
+                                    className={`${navigationMenuTriggerStyle()} text-white text-lg bg-transparent hover:bg-white/10`}
                                 >
                                     <Link to={item.to}>{item.label}</Link>
                                 </NavigationMenuLink>
@@ -67,12 +67,12 @@ const HeaderComponent = () => {
 
             {/* MENU MOBILE */}
             {open && (
-                <div className="md:hidden bg-blue-800 px-6 pb-4">
+                <div className="md:hidden bg-gradient-to-r from-blue-800 via-violet-800 to-purple-800 px-6 pb-4">
                     <nav className="flex flex-col gap-3">
                         <Link
                             to="/"
                             onClick={() => setOpen(false)}
-                            className="text-white py-2 border-b border-blue-700"
+                            className="text-white py-2 border-b border-white/20 hover:bg-white/10 rounded px-2 transition-colors"
                         >
                             Inicio
                         </Link>
@@ -80,7 +80,7 @@ const HeaderComponent = () => {
                         <Link
                             to="/stack"
                             onClick={() => setOpen(false)}
-                            className="text-white py-2 border-b border-blue-700"
+                            className="text-white py-2 border-b border-white/20 hover:bg-white/10 rounded px-2 transition-colors"
                         >
                             Stack Tech
                         </Link>
@@ -88,7 +88,7 @@ const HeaderComponent = () => {
                         <Link
                             to="/proyecto"
                             onClick={() => setOpen(false)}
-                            className="text-white py-2 border-b border-blue-700"
+                            className="text-white py-2 border-b border-white/20 hover:bg-white/10 rounded px-2 transition-colors"
                         >
                             Proyectos
                         </Link>
@@ -96,7 +96,7 @@ const HeaderComponent = () => {
                         <Link
                             to="/contacto"
                             onClick={() => setOpen(false)}
-                            className="text-white py-2"
+                            className="text-white py-2 hover:bg-white/10 rounded px-2 transition-colors"
                         >
                             Contacto
                         </Link>
