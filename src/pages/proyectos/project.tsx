@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Github, Brain, Briefcase, Code2, ExternalLink, Calendar } from 'lucide-react';
+import { Github, Brain, Briefcase, Code2, ExternalLink, Calendar, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Tipos de proyectos
 type ProjectCategory = 'github' | 'work' | 'personal' | 'ia';
@@ -16,91 +17,30 @@ interface Project {
     image?: string;
 }
 
-// Iconos de tecnologías (puedes expandir esto)
+// Iconos de tecnologías
 const techIcons: Record<string, string> = {
-    'Java': '☕',
-    'Spring Boot': '🍃',
-    'React': '⚛️',
-    'TypeScript': '📘',
-    'Docker': '🐳',
-    'Kubernetes': '☸️',
-    'AWS': '☁️',
-    'PostgreSQL': '🐘',
-    'MongoDB': '🍃',
-    'Redis': '🔴',
-    'Kafka': '📨',
-    'Python': '🐍',
-    'Node.js': '💚',
-    '.NET': '🔷',
-    'C#': '🔷',
-    'Angular': '🅰️',
-    'Vue': '💚',
-    'MySQL': '🐬',
-    'GraphQL': '📊',
-    'Tailwind': '🎨',
-    'Git': '📦',
-    'LLM': '🧠',
-    'RAG': '📚',
-    'Embedding': '🔢',
-    'Hugging Face': '🤗',
-
-    // Frontend
-    'HTML5': '🌐',
-    'CSS3': '🎨',
-    'Material UI': '💎',
-
-    // Backend & APIs
-    'Spring WebFlux': '⚡',
-    'OpenAPI': '📋',
-    'AsyncAPI': '📨',
-    'Nexus': '📦',
-    'Xamarin': '📱',
-    'SOAP': '🧼',
-    'JSON': '📄',
-    'XML': '📄',
-    'XSD': '📋',
-
-    // Bases de Datos
-    'Oracle': '🏛️',
-    'SQL Server': '🗄️',
-    'DB2': '💾',
-    'Caffeine': '☕',
-
-    // Cloud & DevOps
-    'Terraform': '🏗️',
-    'OpenShift': '🔴',
-    'Azure DevOps': '🔷',
-
-    // Testing
-    'JUnit': '✅',
-    'Mockito': '🎭',
-    'JMeter': '⚡',
-    'Gatling': '🏹',
-    'TDD': '🧪',
-
-    // Monitoreo & Otros
-    'Proteus': '📡',
-    'SAP': '💼',
-    'AS400': '🖥️',
-    'RPG': '🖥️',
-    'DEVSOFT': '💬',
-    'Swagger': '📖',
-    'Javadoc': '📝',
-    'Informatica PowerCenter': '🔄',
-    'ETL': '🔄',
-    'FTP': '📂',
-
-    // Metodologías
-    'SCRUM': '🏃',
-    'Kanban': '📋',
-    'DDD': '📐',
-    'Clean Code': '✨',
+    'Java': '☕', 'Spring Boot': '🍃', 'React': '⚛️', 'TypeScript': '📘',
+    'Docker': '🐳', 'Kubernetes': '☸️', 'AWS': '☁️', 'PostgreSQL': '🐘',
+    'MongoDB': '🍃', 'Redis': '🔴', 'Kafka': '📨', 'Python': '🐍',
+    'Node.js': '💚', '.NET': '🔷', 'C#': '🔷', 'HTML5': '🌐',
+    'CSS3': '🎨', 'Tailwind': '🎨', 'Git': '📦', 'LLM': '🧠',
+    'RAG': '📚', 'Embedding': '🔢', 'Hugging Face': '🤗',
+    'Spring WebFlux': '⚡', 'OpenAPI': '📋', 'AsyncAPI': '📨',
+    'Xamarin': '📱', 'SOAP': '🧼', 'JSON': '📄', 'XML': '📄',
+    'Oracle': '🏛️', 'SQL Server': '🗄️', 'DB2': '💾',
+    'Terraform': '🏗️', 'OpenShift': '🔴', 'Azure DevOps': '🔷',
+    'JUnit': '✅', 'Mockito': '🎭', 'JMeter': '⚡', 'Gatling': '🏹',
+    'TDD': '🧪', 'Proteus': '📡', 'SAP': '💼', 'AS400': '🖥️',
+    'RPG': '🖥️', 'DEVSOFT': '💬', 'Swagger': '📖',
+    'Informatica PowerCenter': '🔄', 'ETL': '🔄', 'FTP': '📂',
+    'SCRUM': '🏃', 'Kanban': '📋', 'DDD': '📐', 'Clean Code': '✨',
+    'Javascript': '🟨'
 };
 
 const ProjectsComponent = () => {
     const [selectedCategory, setSelectedCategory] = useState<ProjectCategory | 'all'>('all');
+    const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
-    // Datos de ejemplo - Reemplaza con tus proyectos reales
     const projects: Project[] = [
         {
             id: 1,
@@ -237,30 +177,49 @@ const ProjectsComponent = () => {
         : projects.filter(p => p.category === selectedCategory);
 
     const getCategoryIcon = (category: ProjectCategory) => {
-        switch(category) {
-            case 'github': return <Github className="w-4 h-4" />;
-            case 'ia': return <Brain className="w-4 h-4" />;
-            case 'work': return <Briefcase className="w-4 h-4" />;
-            case 'personal': return <Code2 className="w-4 h-4" />;
-        }
+        const icons = {
+            github: <Github className="w-4 h-4" />,
+            ia: <Brain className="w-4 h-4" />,
+            work: <Briefcase className="w-4 h-4" />,
+            personal: <Code2 className="w-4 h-4" />
+        };
+        return icons[category];
     };
 
     const getCategoryLabel = (category: ProjectCategory) => {
-        switch(category) {
-            case 'github': return 'GitHub';
-            case 'ia': return 'IA';
-            case 'work': return 'Experiencia Laboral';
-            case 'personal': return 'Personal';
-        }
+        const labels = {
+            github: 'GitHub',
+            ia: 'IA',
+            work: 'Experiencia Laboral',
+            personal: 'Personal'
+        };
+        return labels[category];
     };
 
     return (
-        <div className="min-h-screen bg-[#0c0c0f] text-white px-6 py-24">
-            <div className="max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                        Mis <span className="text-violet-400">Proyectos</span>
+        <div className="min-h-screen bg-[#0c0c0f] text-white px-6 py-24 relative overflow-hidden">
+            {/* Efectos de fondo animados */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-20 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-20 right-1/3 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
+                     style={{ animationDelay: '1s' }} />
+                <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+                     style={{ animationDelay: '0.5s' }} />
+            </div>
+
+            <div className="max-w-7xl mx-auto relative z-10">
+                {/* Header con animación */}
+                <div className="text-center mb-16 animate-fade-in">
+                    <div className="inline-flex items-center gap-2 mb-4">
+                        <Sparkles className="w-5 h-5 text-violet-400 animate-pulse" />
+                        <span className="text-violet-400 text-sm font-medium uppercase tracking-wider">
+                            Portfolio
+                        </span>
+                        <Sparkles className="w-5 h-5 text-violet-400 animate-pulse" />
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400
+                                 bg-clip-text text-transparent">
+                        Mis Proyectos
                     </h1>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                         Una colección de proyectos que demuestran mis habilidades en desarrollo backend,
@@ -268,83 +227,66 @@ const ProjectsComponent = () => {
                     </p>
                 </div>
 
-                {/* Filtros */}
+                {/* Filtros con animación */}
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    <button
-                        onClick={() => setSelectedCategory('all')}
-                        className={`px-6 py-2 rounded-lg transition-all ${
-                            selectedCategory === 'all'
-                                ? 'bg-violet-600 text-white'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                        }`}
-                    >
-                        Todos
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory('work')}
-                        className={`px-6 py-2 rounded-lg transition-all flex items-center gap-2 ${
-                            selectedCategory === 'work'
-                                ? 'bg-violet-600 text-white'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                        }`}
-                    >
-                        <Briefcase className="w-4 h-4" />
-                        Experiencia Laboral
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory('ia')}
-                        className={`px-6 py-2 rounded-lg transition-all flex items-center gap-2 ${
-                            selectedCategory === 'ia'
-                                ? 'bg-violet-600 text-white'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                        }`}
-                    >
-                        <Brain className="w-4 h-4" />
-                        IA
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory('github')}
-                        className={`px-6 py-2 rounded-lg transition-all flex items-center gap-2 ${
-                            selectedCategory === 'github'
-                                ? 'bg-violet-600 text-white'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                        }`}
-                    >
-                        <Github className="w-4 h-4" />
-                        GitHub
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory('personal')}
-                        className={`px-6 py-2 rounded-lg transition-all flex items-center gap-2 ${
-                            selectedCategory === 'personal'
-                                ? 'bg-violet-600 text-white'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                        }`}
-                    >
-                        <Code2 className="w-4 h-4" />
-                        Personal
-                    </button>
+                    {[
+                        { value: 'all', label: 'Todos', icon: null },
+                        { value: 'work', label: 'Experiencia Laboral', icon: <Briefcase className="w-4 h-4" /> },
+                        { value: 'ia', label: 'IA', icon: <Brain className="w-4 h-4" /> },
+                        { value: 'github', label: 'GitHub', icon: <Github className="w-4 h-4" /> },
+                        { value: 'personal', label: 'Personal', icon: <Code2 className="w-4 h-4" /> }
+                    ].map((filter, index) => (
+                        <button
+                            key={filter.value}
+                            onClick={() => setSelectedCategory(filter.value as ProjectCategory | 'all')}
+                            className={`px-6 py-2 rounded-lg transition-all duration-300 flex items-center gap-2
+                                     transform hover:scale-105 ${
+                                selectedCategory === filter.value
+                                    ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/50'
+                                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                            }`}
+                            style={{
+                                animation: `slideDown 0.5s ease-out ${index * 0.1}s backwards`
+                            }}
+                        >
+                            {filter.icon}
+                            {filter.label}
+                        </button>
+                    ))}
                 </div>
 
-                {/* Grid de Proyectos */}
+                {/* Grid de Proyectos con animaciones */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredProjects.map((project) => (
+                    {filteredProjects.map((project, index) => (
                         <div
                             key={project.id}
+                            onMouseEnter={() => setHoveredProject(project.id)}
+                            onMouseLeave={() => setHoveredProject(null)}
                             className="bg-[#1a1a1f] rounded-xl border border-gray-800 hover:border-violet-500
-                         transition-all duration-300 overflow-hidden group hover:shadow-2xl
-                         hover:shadow-violet-500/10 flex flex-col"
+                                     transition-all duration-500 overflow-hidden group
+                                     transform hover:scale-105 hover:shadow-2xl hover:shadow-violet-500/20
+                                     flex flex-col relative"
+                            style={{
+                                animation: `zoomIn 0.6s ease-out ${index * 0.1}s backwards`
+                            }}
                         >
+                            {/* Brillo animado en hover */}
+                            {hoveredProject === project.id && (
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent
+                                              animate-shimmer pointer-events-none z-10" />
+                            )}
+
                             {/* Header del Card */}
                             <div className="p-6 flex-1 flex flex-col">
                                 <div className="flex items-start justify-between mb-4">
                                     <div className="flex items-center gap-2">
-                                        <div className="p-2 bg-violet-500/10 rounded-lg text-violet-400">
+                                        <div className="p-2 bg-violet-500/10 rounded-lg text-violet-400
+                                                      group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                                             {getCategoryIcon(project.category)}
                                         </div>
                                         <span className="text-xs text-gray-400 uppercase tracking-wider">
-                      {getCategoryLabel(project.category)}
-                    </span>
+                                            {getCategoryLabel(project.category)}
+                                        </span>
                                     </div>
                                     <div className="flex items-center gap-1 text-gray-500 text-xs">
                                         <Calendar className="w-3 h-3" />
@@ -352,27 +294,40 @@ const ProjectsComponent = () => {
                                     </div>
                                 </div>
 
-                                <h3 className="text-xl font-semibold mb-3 group-hover:text-violet-400 transition-colors">
+                                <h3 className="text-xl font-semibold mb-3 group-hover:text-violet-400 transition-colors duration-300">
                                     {project.title}
                                 </h3>
 
-                                <p className="text-gray-400 text-sm mb-4 flex-1">
+                                <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-4">
                                     {project.description}
                                 </p>
 
                                 {/* Tecnologías */}
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.technologies.map((tech, index) => (
+                                    {project.technologies.slice(0, 6).map((tech, techIndex) => (
                                         <div
-                                            key={index}
+                                            key={techIndex}
                                             className="flex items-center gap-1 px-3 py-1 bg-gray-800/50 rounded-full
-                                 text-xs text-gray-300 border border-gray-700"
+                                                     text-xs text-gray-300 border border-gray-700
+                                                     hover:border-violet-500 hover:bg-gray-700/50 hover:scale-110
+                                                     transition-all duration-300 cursor-default"
                                             title={tech}
+                                            style={{
+                                                animation: hoveredProject === project.id
+                                                    ? `bounce 0.5s ease-out ${techIndex * 0.05}s`
+                                                    : 'none'
+                                            }}
                                         >
                                             <span className="text-base">{techIcons[tech] || '🔧'}</span>
                                             <span>{tech}</span>
                                         </div>
                                     ))}
+                                    {project.technologies.length > 6 && (
+                                        <div className="flex items-center px-3 py-1 bg-violet-500/10 rounded-full
+                                                      text-xs text-violet-400 border border-violet-500/30">
+                                            +{project.technologies.length - 6}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
@@ -384,7 +339,8 @@ const ProjectsComponent = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex-1 flex items-center justify-center gap-2 px-4 py-2
-                             bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-sm"
+                                                 bg-gray-800 hover:bg-gray-700 rounded-lg transition-all duration-300
+                                                 text-sm transform hover:scale-105"
                                     >
                                         <Github className="w-4 h-4" />
                                         Código
@@ -396,7 +352,10 @@ const ProjectsComponent = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex-1 flex items-center justify-center gap-2 px-4 py-2
-                             bg-violet-600 hover:bg-violet-700 rounded-lg transition-colors text-sm"
+                                                 bg-gradient-to-r from-violet-600 to-purple-600
+                                                 hover:from-violet-700 hover:to-purple-700 rounded-lg
+                                                 transition-all duration-300 text-sm transform hover:scale-105
+                                                 shadow-lg hover:shadow-violet-500/50"
                                     >
                                         <ExternalLink className="w-4 h-4" />
                                         Ver Demo
@@ -409,7 +368,7 @@ const ProjectsComponent = () => {
 
                 {/* Mensaje si no hay proyectos */}
                 {filteredProjects.length === 0 && (
-                    <div className="text-center py-16">
+                    <div className="text-center py-16 animate-fade-in">
                         <p className="text-gray-400 text-lg">
                             No hay proyectos en esta categoría
                         </p>
@@ -417,20 +376,84 @@ const ProjectsComponent = () => {
                 )}
 
                 {/* Call to Action */}
-                <div className="mt-20 text-center">
+                <div className="mt-20 text-center animate-fade-in">
                     <div className="bg-gradient-to-r from-violet-600/10 to-purple-600/10 border border-violet-500/20
-                        rounded-2xl p-8 max-w-3xl mx-auto">
+                                  rounded-2xl p-8 max-w-3xl mx-auto hover:shadow-2xl hover:shadow-violet-500/20
+                                  transition-all duration-300">
                         <h3 className="text-2xl font-bold mb-3">¿Tienes un proyecto en mente?</h3>
                         <p className="text-gray-400 mb-6">
                             Estoy disponible para colaborar en proyectos desafiantes y ayudar a tu equipo
                         </p>
-                        <button className="bg-violet-600 hover:bg-violet-700 px-8 py-3 rounded-lg
-                             transition-colors font-medium">
-                            Hablemos
+                        <button className="bg-gradient-to-r from-violet-600 to-purple-600
+                                         hover:from-violet-700 hover:to-purple-700 px-8 py-3 rounded-lg
+                                         transition-all duration-300 font-medium
+                                         transform hover:scale-105 hover:shadow-2xl hover:shadow-violet-500/50">
+                            <Link to='/contacto'>
+                            Hablemos</Link>
                         </button>
                     </div>
                 </div>
             </div>
+
+            {/* CSS Animations */}
+            <style>{`
+                @keyframes slideDown {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                @keyframes zoomIn {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.9);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+
+                @keyframes fade-in {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+
+                @keyframes bounce {
+                    0%, 100% {
+                        transform: translateY(0);
+                    }
+                    50% {
+                        transform: translateY(-5px);
+                    }
+                }
+
+                @keyframes shimmer {
+                    0% {
+                        transform: translateX(-100%);
+                    }
+                    100% {
+                        transform: translateX(100%);
+                    }
+                }
+
+                .animate-fade-in {
+                    animation: fade-in 0.8s ease-out;
+                }
+
+                .animate-shimmer {
+                    animation: shimmer 2s infinite;
+                }
+            `}</style>
         </div>
     );
 };

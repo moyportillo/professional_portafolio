@@ -14,6 +14,7 @@ import {
     GraduationCap,
     Sparkles
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface TechCategory {
     title: string;
@@ -442,7 +443,8 @@ const TechStackComponent = () => {
                                          hover:from-violet-700 hover:to-purple-700 px-8 py-3 rounded-lg
                                          transition-all duration-300 font-medium
                                          transform hover:scale-105 hover:shadow-2xl hover:shadow-violet-500/50">
-                            Contactar
+                            <Link to='/contacto'>
+                            Contactar</Link>
                         </button>
                     </div>
                 </section>
