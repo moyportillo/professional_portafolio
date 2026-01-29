@@ -32,6 +32,7 @@ const techIcons: Record<string, string> = {
     'Python': '🐍',
     'Node.js': '💚',
     '.NET': '🔷',
+    'C#': '🔷',
     'Angular': '🅰️',
     'Vue': '💚',
     'MySQL': '🐬',
@@ -42,6 +43,58 @@ const techIcons: Record<string, string> = {
     'RAG': '📚',
     'Embedding': '🔢',
     'Hugging Face': '🤗',
+
+    // Frontend
+    'HTML5': '🌐',
+    'CSS3': '🎨',
+    'Material UI': '💎',
+
+    // Backend & APIs
+    'Spring WebFlux': '⚡',
+    'OpenAPI': '📋',
+    'AsyncAPI': '📨',
+    'Nexus': '📦',
+    'Xamarin': '📱',
+    'SOAP': '🧼',
+    'JSON': '📄',
+    'XML': '📄',
+    'XSD': '📋',
+
+    // Bases de Datos
+    'Oracle': '🏛️',
+    'SQL Server': '🗄️',
+    'DB2': '💾',
+    'Caffeine': '☕',
+
+    // Cloud & DevOps
+    'Terraform': '🏗️',
+    'OpenShift': '🔴',
+    'Azure DevOps': '🔷',
+
+    // Testing
+    'JUnit': '✅',
+    'Mockito': '🎭',
+    'JMeter': '⚡',
+    'Gatling': '🏹',
+    'TDD': '🧪',
+
+    // Monitoreo & Otros
+    'Proteus': '📡',
+    'SAP': '💼',
+    'AS400': '🖥️',
+    'RPG': '🖥️',
+    'DEVSOFT': '💬',
+    'Swagger': '📖',
+    'Javadoc': '📝',
+    'Informatica PowerCenter': '🔄',
+    'ETL': '🔄',
+    'FTP': '📂',
+
+    // Metodologías
+    'SCRUM': '🏃',
+    'Kanban': '📋',
+    'DDD': '📐',
+    'Clean Code': '✨',
 };
 
 const ProjectsComponent = () => {
@@ -56,7 +109,7 @@ const ProjectsComponent = () => {
             category: 'ia',
             technologies: ['Python', 'LLM', 'RAG', 'Embedding', 'Hugging Face', 'Git'],
             github: 'https://github.com/moyportillo/RAG-Embedding-LLM-Text-Generation.git',
-            date: '2025'
+            date: '2026'
         },
         {
             id: 2,
@@ -70,48 +123,112 @@ const ProjectsComponent = () => {
         },
         {
             id: 3,
-            title: 'API REST con Clean Architecture',
-            description: 'API RESTful siguiendo principios SOLID y Clean Architecture, con documentación Swagger y pruebas unitarias completas.',
-            category: 'github',
-            technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'Git'],
-            github: 'https://github.com/usuario/proyecto',
-            date: '2024'
+            title: 'Migración e Infraestructura Cloud con CI/CD',
+            description: 'Gestión y automatización de despliegues continuos (CI/CD) con Docker, Azure DevOps y control de versiones por imágenes. Creación de infraestructura en la nube (IaC) con Terraform en AWS.',
+            category: 'work',
+            technologies: ['AWS', 'Terraform', 'Docker', 'Azure DevOps'],
+            date: '2025'
         },
         {
             id: 4,
-            title: 'Dashboard Analytics en React',
-            description: 'Dashboard interactivo para análisis de datos en tiempo real con gráficos dinámicos y filtros avanzados.',
-            category: 'personal',
-            technologies: ['React', 'TypeScript', 'Tailwind', 'Node.js', 'MongoDB'],
-            github: 'https://github.com/usuario/dashboard',
-            date: '2023'
+            title: 'Arquitectura de Microservicios con Spring Boot',
+            description: 'Desarrollo de microservicios para diferentes procesos bancarios con Spring Boot y Arquitectura Hexagonal, aplicando DDD, patrones de diseño de software y principios de Clean Code para sistemas escalables y mantenibles.',
+            category: 'work',
+            technologies: ['Java', 'Spring Boot', 'Oracle', 'Swagger', 'SOAP', 'JSON', 'Clean Code', 'DDD', 'SCRUM', 'JMeter', 'SAP', 'Swagger', 'Docker', 'OpenShift'],
+            date: '2022-2025'
         },
         {
             id: 5,
-            title: 'Sistema de Gestión Cloud-Native',
-            description: 'Aplicación cloud-native desplegada en AWS con infraestructura como código usando Terraform y CI/CD con GitHub Actions.',
+            title: 'Plataformas Administrativas Bancarias Frontend con React y TypeScript',
+            description: 'Diseño y desarrollo de interfaces frontend de modulos administrativos de recaudación bancarios con ReactJS utilizando TypeScript, CSS3, HTML5 y Tailwind CSS, creando experiencias de usuario modernas y responsivas.',
             category: 'work',
-            technologies: ['AWS', 'Docker', 'Kubernetes', 'Python', 'PostgreSQL'],
-            date: '2023',
-            link: 'https://example.com'
+            technologies: ['React', 'TypeScript', 'Tailwind', 'HTML5', 'CSS3', 'Docker', 'OpenShift', 'TDD', 'SCRUM' ],
+            date: '2024 - 2025'
         },
         {
             id: 6,
-            title: 'Plataforma de E-Learning',
-            description: 'Sistema completo de gestión de cursos online con autenticación JWT, pagos integrados y sistema de notificaciones.',
+            title: 'Proyecto INDITEX Product Price Webflux Consumer',
+            description: 'Proyecto en Spring Boot utilizando arquitectura hexagonal y Spring WebFlux para gestionar los precios de productos del ecommerce de Inditex. Proporciona una API REST que permite consultar el precio aplicable en función de la fecha de consulta, el identificador del producto y la marca, sobre una base de datos en memoria. documentadas con OpenAPI y AsyncAPI.',
             category: 'personal',
-            technologies: ['Java', 'Spring Boot', 'React', 'MySQL', 'Redis', 'AWS'],
-            github: 'https://github.com/usuario/elearning',
-            link: 'https://example.com',
-            date: '2023'
+            technologies: ['Java', 'Spring Boot', 'OpenAPI', 'AsyncAPI', 'Spring WebFlux', 'Docker', 'Git', 'JSON', 'JUnit', 'Mockito', 'TDD',  'Swagger', 'Clean Code'],
+            github: "https://github.com/moyportillo/Inditex_CORE_Plataform_Reactive_Webflux.git",
+            date: '2024'
         },
         {
             id: 7,
-            title: 'Integración de Sistemas Legacy',
-            description: 'Modernización e integración de sistemas legacy mediante APIs REST y mensajería asíncrona.',
+            title: 'Refactorización de Aplicación Web de Notificaciones Bancaria con .NET',
+            description: 'Refactorización y mantenimiento fullstack de proyecto de notificaciones bancarios de gestión de correos y SMS con C#, .NET para APIs REST, aplicaciones web y su ecosistema de herramientas.',
             category: 'work',
-            technologies: ['.NET', 'Kafka', 'PostgreSQL', 'Docker', 'Redis'],
-            date: '2022'
+            technologies: ['.NET', 'C#', 'Docker', 'Git', 'HTML5', 'CSS3', 'JSON', 'XML', 'SQL Server', 'OpenShift', 'JUnit', 'DEVSOFT', 'Swagger'],
+            date: '2024 - 2025'
+        },
+        {
+            id: 8,
+            title: 'Refactorización de Aplicación Móvil Mensajeria Interna',
+            description: 'Refactorización y mantenimiento de aplicación móvil de mensajeria interna de gestión de entrega de tarjetas de debito/crédito con Xamarin y backend con C#.',
+            category: 'work',
+            technologies: ['C#', 'Xamarin', 'JSON', 'XML', 'SQL Server', 'TDD', 'Docker', 'DEVSOFT', 'Swagger'],
+            date: '2024 - 2025'
+        },
+        {
+            id: 9,
+            title: 'Integración de notificaciones SMS con Core bancario AS400',
+            description: 'Integración y desarrollo de Socket en java para el envio de notificaciones SMS cuando se rechaza la compra por medio de POS de tarjetas debito/crédito. Manejo de eventos y desarrollo en RPG para AS400 para conexión con socket.',
+            category: 'work',
+            technologies: ['Java', 'AS400', 'RPG', 'DB2', 'DEVSOFT', 'SCRUM'],
+            date: '2023'
+        },
+        {
+            id: 10,
+            title: 'Integración de Sistemas Bancarios',
+            description: 'Experiencia en CORE bancarios (SAP, AS400) y mensajerías (DEVSOFT). Desarrollo en RPG para AS400. Documentación técnica con Swagger, Javadoc y README.md.',
+            category: 'work',
+            technologies: ['SAP', 'AS400', 'RPG'],
+            date: '2021-2023'
+        },
+        {
+            id: 11,
+            title: 'Procesos ETL y Gestión de Datos',
+            description: 'Procesos ETL con Informatica PowerCenter y manejo de archivos vía FTP para integración y transformación de datos empresariales para procesos de pago, transferencia y beneficiarios bancarios.',
+            category: 'work',
+            technologies: ['Informatica PowerCenter', 'ETL', 'FTP'],
+            date: '2021-2022'
+        },
+        {
+            id: 12,
+            title: 'Sistema de Censo COVID-19',
+            description: 'Proyecto para censo COVID-19 con Python para la gestión de datos y recolección de información de la pandemia del COVID-19.',
+            category: 'github',
+            technologies: ['Python', 'MongoDB', 'Git'],
+            github: 'https://github.com/moyportillo/Censo_COVID19.git',
+            date: '2020'
+        },
+        {
+            id: 13,
+            title: 'Creación de Sitio Web COVID-19',
+            description: 'Creación de sitio web de información para COVID-19, utilizando HTML, CSS y javascript para las diferentes paginas con gráficos y compremsión financiera',
+            category: 'github',
+            technologies: ['HTML5', 'CSS3', 'Javascript', 'Git'],
+            github: 'https://github.com/moyportillo/Proyecto-Covid-19.git',
+            link: 'https://moyportillo.github.io/Proyecto-Covid-19/',
+            date: '2020'
+        },
+        {
+            id: 14,
+            title: 'Sistema de Gestión Administrativa Empresarial Bienes Raices - ZUMOT',
+            description: 'Análisis, diseño y desarrollo del módulo administrativo empresarial con C# y .NET. Implementación de funcionalidades robustas para gestión administrativa, diseño y modelado de bases de datos en SQL Server con optimización de consultas. Aplicación de metodología Kanban, control de versiones con GIT, y realización de pruebas exhaustivas (caja blanca y negra) con documentación completa del código.',
+            category: 'work',
+            technologies: ['C#', '.NET', 'SQL Server', 'Git', 'Kanban'],
+            github: 'https://github.com/moyportillo/ZUMOT.git',
+            date: '2017'
+        },
+        {
+            id: 15,
+            title: 'Monitoreo y Mantenimiento de Microservicios',
+            description: 'Monitoreo y mantenimiento de microservicios en entornos productivos con Proteus. Participación en equipos ágiles con SCRUM y Kanban, fomentando automatización y optimización de procesos.',
+            category: 'work',
+            technologies: ['Proteus', 'Docker', 'Kubernetes'],
+            date: '2023-2024'
         }
     ];
 
